@@ -9,106 +9,238 @@ const dimensions = [
 
 const questions = [
   {
-    text: "面对一个陌生现象，你第一反应是？",
+    text: "面对一个陌生现象，你最自然的第一步是？",
+    focus: "observation",
     options: [
-      ["先观察很多次，找稳定规律", { observation: 3, skepticism: 1 }],
-      ["尝试写成一个可计算的模型", { math: 3, imagination: 1 }],
-      ["设计一个装置或实验去测它", { experiment: 3, tools: 1 }],
-      ["先怀疑已有解释哪里不够好", { skepticism: 3, observation: 1 }]
+      ["先反复观察，记录它在什么条件下出现", { observation: 3, skepticism: 1 }],
+      ["把它写成变量关系，看看能不能建模", { math: 3, imagination: 1 }],
+      ["设计一个小实验，主动改变关键条件", { experiment: 3, tools: 1 }],
+      ["先问：有没有更简单的解释或隐藏假设？", { skepticism: 3, observation: 1 }]
     ]
   },
   {
-    text: "如果你生活在科学革命时期，你最可能沉迷于？",
+    text: "如果研究结果和预期相反，你会更倾向于？",
+    focus: "skepticism",
     options: [
-      ["改进望远镜并画下天体位置", { observation: 2, tools: 2 }],
-      ["寻找能统一很多现象的方程", { math: 3, imagination: 1 }],
-      ["反复做落体、摆和光学实验", { experiment: 3, skepticism: 1 }],
-      ["收集航海、植物和地理记录", { observation: 3, imagination: 1 }]
+      ["检查样本、仪器和记录是否可靠", { skepticism: 2, tools: 2 }],
+      ["把反常点保留下来，继续追踪它是否重复出现", { observation: 3, skepticism: 1 }],
+      ["重新安排对照组，看差异是否仍然存在", { experiment: 3, skepticism: 1 }],
+      ["把它当成新理论的入口，尝试换一个解释框架", { imagination: 3, math: 1 }]
     ]
   },
   {
-    text: "你最欣赏哪类突破？",
+    text: "你最喜欢哪一种科学突破？",
+    focus: "imagination",
     options: [
-      ["一个漂亮实验推翻旧观念", { experiment: 3, skepticism: 2 }],
-      ["一个公式统一一大片现象", { math: 3, imagination: 2 }],
-      ["一个工具打开新世界", { tools: 3, observation: 2 }],
-      ["长期数据积累后的洞见", { observation: 3, skepticism: 1 }]
+      ["一个公式突然统一了很多分散现象", { math: 3, imagination: 2 }],
+      ["一种新仪器让过去看不见的结构显现出来", { tools: 3, observation: 2 }],
+      ["一个关键实验推翻了长期流行的观念", { experiment: 3, skepticism: 2 }],
+      ["把两个原本无关的领域连接成新的问题", { imagination: 3, observation: 1 }]
     ]
   },
   {
-    text: "团队遇到争议时，你通常扮演？",
+    text: "你在团队讨论中最常扮演什么角色？",
+    focus: "tools",
     options: [
-      ["证据管理员：先看数据质量", { observation: 2, skepticism: 2 }],
-      ["模型建筑师：搭一个解释框架", { math: 2, imagination: 2 }],
-      ["实验修理工：换条件再试一次", { experiment: 2, tools: 2 }],
-      ["反方辩手：专找隐藏假设", { skepticism: 3, math: 1 }]
+      ["证据管理员：先看数据质量和采集条件", { observation: 2, skepticism: 2 }],
+      ["模型建筑师：把想法整理成变量和结构", { math: 2, imagination: 2 }],
+      ["实验修理工：换条件、补对照、再试一次", { experiment: 2, tools: 2 }],
+      ["工具搭建者：写脚本、改装置、自动化流程", { tools: 3, experiment: 1 }]
     ]
   },
   {
-    text: "你更容易被哪种图像打动？",
-    options: [
-      ["显微镜下第一次看见新结构", { observation: 2, tools: 2 }],
-      ["曲线拟合后突然出现的规律", { math: 2, observation: 1 }],
-      ["实验台上一个关键对照组", { experiment: 3, skepticism: 1 }],
-      ["跨学科概念连成一张大图", { imagination: 3, math: 1 }]
-    ]
-  },
-  {
-    text: "如果只能带一样东西去研究未知世界，你选？",
+    text: "如果只能带一样东西去研究未知世界，你会选？",
+    focus: "math",
     options: [
       ["一本耐用的观察笔记本", { observation: 3 }],
       ["一套可改造的测量工具", { tools: 3, experiment: 1 }],
-      ["一块黑板和足够多粉笔", { math: 3 }],
-      ["一串大胆问题", { skepticism: 2, imagination: 2 }]
+      ["一块黑板和足够多的粉笔", { math: 3 }],
+      ["一串大胆但可被挑战的问题", { skepticism: 2, imagination: 2 }]
     ]
   },
   {
-    text: "你怎么看待错误结果？",
+    text: "你怎样判断一个解释是否足够好？",
+    focus: "experiment",
     options: [
-      ["它可能揭示了仪器或方法问题", { tools: 2, experiment: 2 }],
-      ["它提醒我模型边界在哪里", { math: 2, skepticism: 2 }],
-      ["它是下一轮观察的线索", { observation: 2, imagination: 1 }],
-      ["它可能正是新现象的入口", { imagination: 3, skepticism: 1 }]
+      ["它能预测下一次观察会发生什么", { math: 2, observation: 2 }],
+      ["它经得起对照实验和重复检验", { experiment: 3, skepticism: 1 }],
+      ["它能解释例外，而不是只解释平均趋势", { skepticism: 3, observation: 1 }],
+      ["它能把分散现象放进一个更大的图景", { imagination: 3, math: 1 }]
     ]
   },
   {
-    text: "你最喜欢的科学工作节奏是？",
+    text: "你最容易被哪种图像打动？",
+    focus: "observation",
     options: [
-      ["长时间跟踪一个系统的变化", { observation: 3 }],
-      ["短周期实验和快速迭代", { experiment: 3 }],
-      ["安静推导，直到结构闭合", { math: 3 }],
-      ["把远处领域的想法搬过来", { imagination: 3 }]
+      ["显微镜下第一次看见的新结构", { observation: 2, tools: 2 }],
+      ["拟合曲线后突然浮现的规律", { math: 2, observation: 1 }],
+      ["实验台上清楚分开的对照组", { experiment: 3, skepticism: 1 }],
+      ["跨学科概念连成的一张大图", { imagination: 3, math: 1 }]
     ]
   },
   {
-    text: "如果一个理论很美但证据不足，你会？",
+    text: "如果一个理论很漂亮但证据不足，你会？",
+    focus: "skepticism",
     options: [
-      ["暂时保留，等更多观察", { observation: 2, skepticism: 2 }],
-      ["先看它是否能产生可检验预测", { math: 2, experiment: 2 }],
-      ["设计实验去挑战它", { experiment: 3, skepticism: 1 }],
+      ["暂时保留，等更多观察积累", { observation: 2, skepticism: 2 }],
+      ["先看它能否产生可检验预测", { math: 2, experiment: 2 }],
+      ["设计实验去挑战它最脆弱的地方", { experiment: 3, skepticism: 1 }],
       ["把它当作启发，而不是结论", { imagination: 2, skepticism: 2 }]
     ]
   },
   {
-    text: "你最想和哪种历史人物共事？",
+    text: "你最喜欢的研究节奏是？",
+    focus: "experiment",
     options: [
-      ["细致记录自然变化的人", { observation: 3 }],
-      ["能把世界写进方程的人", { math: 3 }],
-      ["在实验室里坚持多年的人", { experiment: 3 }],
-      ["发明新机器或新算法的人", { tools: 3, imagination: 1 }]
+      ["长时间追踪一个系统的变化", { observation: 3 }],
+      ["短周期实验和快速迭代", { experiment: 3 }],
+      ["安静推导，直到结构闭合", { math: 3 }],
+      ["把远处领域的想法搬过来试试看", { imagination: 3 }]
     ]
   },
   {
-    text: "你的研究笔记最像？",
+    text: "面对一堆杂乱数据，你首先想做什么？",
+    focus: "math",
     options: [
-      ["大量时间、地点、条件和例外", { observation: 3, skepticism: 1 }],
-      ["公式、图形和变量关系", { math: 3 }],
-      ["实验条件、失败记录和改进", { experiment: 3, tools: 1 }],
-      ["类比、草图和跨界灵感", { imagination: 3 }]
+      ["画出分布、趋势和异常点", { observation: 2, math: 1 }],
+      ["建立指标，把复杂情况压缩成可比较的量", { math: 3, tools: 1 }],
+      ["检查采集流程，排除系统误差", { tools: 2, skepticism: 2 }],
+      ["问这些数据背后可能有哪种机制", { imagination: 2, experiment: 1 }]
+    ]
+  },
+  {
+    text: "你更愿意把时间花在哪类工作上？",
+    focus: "tools",
+    options: [
+      ["整理长期记录，让细节变得可靠", { observation: 3, skepticism: 1 }],
+      ["写分析代码，让重复工作自动化", { tools: 3, math: 1 }],
+      ["调试实验流程，让结果更稳定", { experiment: 3, tools: 1 }],
+      ["读不同领域的文章，寻找新连接", { imagination: 3, observation: 1 }]
+    ]
+  },
+  {
+    text: "如果你能加入一次科学史现场，你更想去哪里？",
+    focus: "imagination",
+    options: [
+      ["达尔文整理物种材料的书房", { observation: 3, imagination: 1 }],
+      ["居里夫人分离放射性物质的实验室", { experiment: 3, tools: 1 }],
+      ["图灵思考机器与算法的房间", { math: 2, tools: 2 }],
+      ["卡森把生态证据写成公共议题的时刻", { imagination: 2, skepticism: 2 }]
+    ]
+  },
+  {
+    text: "你对“好问题”的直觉是？",
+    focus: "skepticism",
+    options: [
+      ["它能被观察到的事实逐步回答", { observation: 3 }],
+      ["它能被拆成清楚的变量关系", { math: 3 }],
+      ["它能通过实验设计被推进", { experiment: 3 }],
+      ["它能暴露一个领域默认相信的前提", { skepticism: 3, imagination: 1 }]
+    ]
+  },
+  {
+    text: "当一个系统太复杂时，你会怎样靠近它？",
+    focus: "observation",
+    options: [
+      ["先分类和标注，建立稳定的观察语言", { observation: 3, tools: 1 }],
+      ["抽象出最少变量，先做一个简化模型", { math: 3 }],
+      ["做局部干预，看系统如何响应", { experiment: 3, skepticism: 1 }],
+      ["寻找不同层级之间的连接关系", { imagination: 3, observation: 1 }]
+    ]
+  },
+  {
+    text: "你最看重一套科学工具的哪一点？",
+    focus: "tools",
+    options: [
+      ["能稳定记录微小变化", { tools: 2, observation: 2 }],
+      ["能让实验条件可控、可重复", { tools: 2, experiment: 2 }],
+      ["能把复杂数据转成可计算对象", { tools: 2, math: 2 }],
+      ["能帮助发现以前没法问的问题", { tools: 2, imagination: 2 }]
+    ]
+  },
+  {
+    text: "如果你负责一个新课题，最想先确认什么？",
+    focus: "experiment",
+    options: [
+      ["现象是否真实稳定，而不是偶然波动", { observation: 2, skepticism: 2 }],
+      ["核心变量之间可能是什么关系", { math: 3, observation: 1 }],
+      ["最小可行实验应该怎样设计", { experiment: 3, tools: 1 }],
+      ["这个问题会不会改变原来的研究框架", { imagination: 2, skepticism: 2 }]
+    ]
+  },
+  {
+    text: "你处理失败实验的方式更像？",
+    focus: "skepticism",
+    options: [
+      ["把失败条件完整记下来，之后比较", { observation: 3, skepticism: 1 }],
+      ["回到假设，寻找哪一步推理不成立", { math: 2, skepticism: 2 }],
+      ["逐个排查试剂、仪器和参数", { tools: 2, experiment: 2 }],
+      ["思考失败是否暗示另一个问题更重要", { imagination: 3, skepticism: 1 }]
+    ]
+  },
+  {
+    text: "你更喜欢哪种科学表达？",
+    focus: "math",
+    options: [
+      ["一张包含关键观察细节的图谱", { observation: 3 }],
+      ["一个简洁但有解释力的方程", { math: 3 }],
+      ["一套别人可以复现实验的流程", { experiment: 3, tools: 1 }],
+      ["一个让人重新理解世界的类比", { imagination: 3 }]
+    ]
+  },
+  {
+    text: "你最希望自己的研究被别人怎样使用？",
+    focus: "tools",
+    options: [
+      ["成为后来者可靠引用的事实记录", { observation: 3 }],
+      ["成为可迁移的模型或分析框架", { math: 3, tools: 1 }],
+      ["成为可以直接复用的方法或平台", { tools: 3, experiment: 1 }],
+      ["成为打开新方向的概念种子", { imagination: 3, skepticism: 1 }]
+    ]
+  },
+  {
+    text: "看到一个非常流行的说法，你会先做什么？",
+    focus: "skepticism",
+    options: [
+      ["找原始数据和最早的观察来源", { observation: 2, skepticism: 2 }],
+      ["看它的推理链条是否自洽", { math: 2, skepticism: 2 }],
+      ["想一个能区分它和替代解释的实验", { experiment: 3, skepticism: 1 }],
+      ["问它为什么会在这个时代变得流行", { imagination: 2, skepticism: 2 }]
+    ]
+  },
+  {
+    text: "你对跨学科合作最感兴趣的是？",
+    focus: "imagination",
+    options: [
+      ["不同领域观察到同一类模式", { observation: 2, imagination: 2 }],
+      ["一个数学结构能在多个领域复用", { math: 3, imagination: 1 }],
+      ["一个实验范式迁移到新对象上", { experiment: 2, tools: 1, imagination: 1 }],
+      ["一种工具让两个领域终于能对话", { tools: 2, imagination: 2 }]
+    ]
+  },
+  {
+    text: "如果让你改进一项研究，你会优先改进？",
+    focus: "experiment",
+    options: [
+      ["采样范围，让观察更完整", { observation: 3 }],
+      ["统计模型，让结论更清楚", { math: 3 }],
+      ["实验对照，让因果更可信", { experiment: 3, skepticism: 1 }],
+      ["数据流程，让分析更可复现", { tools: 3, skepticism: 1 }]
+    ]
+  },
+  {
+    text: "你最享受哪种“发现前夜”的感觉？",
+    focus: "observation",
+    options: [
+      ["连续几天记录后，一个模式慢慢浮现", { observation: 3, imagination: 1 }],
+      ["推导到最后，所有项突然对齐", { math: 3, imagination: 1 }],
+      ["关键参数终于调对，结果稳定出现", { experiment: 3, tools: 1 }],
+      ["一个漏洞被发现，整个问题变得更清醒", { skepticism: 3, math: 1 }]
     ]
   },
   {
     text: "你最想留下的科学贡献是？",
+    focus: "imagination",
     options: [
       ["发现一个别人忽视的真实现象", { observation: 3, skepticism: 1 }],
       ["建立一个能解释很多事的框架", { math: 2, imagination: 2 }],
@@ -223,8 +355,11 @@ function getScores() {
       raw[key] += value;
     });
   });
+
   const max = Math.max(...Object.values(raw), 1);
-  return Object.fromEntries(Object.entries(raw).map(([key, value]) => [key, Math.round((value / max) * 100)]));
+  return Object.fromEntries(
+    Object.entries(raw).map(([key, value]) => [key, Math.round((value / max) * 100)])
+  );
 }
 
 function pickPersona(scores) {

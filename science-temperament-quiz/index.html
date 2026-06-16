@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>科学气质测试</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">科学气质测试</a>
+    <nav>
+      <a href="#quiz">开始</a>
+      <a href="#result">结果</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="kicker">Science History Persona Quiz</p>
+        <h1>科学气质测试</h1>
+        <p class="hero-copy">
+          你更像哪一种科学发现者？回答 12 个问题，生成你的科学气质雷达图。
+        </p>
+        <a class="primary-action" href="#quiz">开始测试</a>
+      </div>
+    </section>
+
+    <section id="quiz" class="quiz-shell">
+      <div class="progress-panel">
+        <p class="section-label">Quiz</p>
+        <h2 id="questionCounter">第 1 / 12 题</h2>
+        <div class="progress-track">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="question-panel">
+        <h3 id="questionText"></h3>
+        <div id="options" class="options"></div>
+        <div class="quiz-actions">
+          <button id="prevBtn" type="button" class="secondary">上一题</button>
+          <button id="nextBtn" type="button" class="primary">下一题</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="result-shell" hidden>
+      <div class="result-heading">
+        <p class="section-label">Result</p>
+        <h2 id="personaTitle"></h2>
+        <p id="personaSummary"></p>
+      </div>
+
+      <div class="result-layout">
+        <div class="radar-panel">
+          <canvas id="radarCanvas" width="560" height="560" aria-label="科学气质雷达图"></canvas>
+        </div>
+        <div class="interpretation-panel">
+          <div class="score-list" id="scoreList"></div>
+          <div class="persona-box">
+            <h3 id="personaKeywords"></h3>
+            <p id="personaAdvice"></p>
+          </div>
+          <div class="result-actions">
+            <button id="restartBtn" type="button" class="secondary">重新测试</button>
+            <button id="copyBtn" type="button" class="primary">复制结果</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>不是智商测试，而是你偏爱的发现方式。</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

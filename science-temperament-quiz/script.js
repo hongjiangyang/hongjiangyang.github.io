@@ -375,13 +375,51 @@ function pickPersona(scores) {
   return best;
 }
 
+function getTypicality(scores) {
+  const values = Object.values(scores).sort((a, b) => b - a);
+  const top = values[0];
+  const second = values[1];
+  const bottom = values[values.length - 1];
+  const mean = values.reduce((sum, value) => sum + value, 0) / values.length;
+  const std = Math.sqrt(values.reduce((sum, value) => sum + ((value - mean) ** 2), 0) / values.length);
+
+  const marginComponent = Math.min((top - second) / 35, 1);
+  const spreadComponent = Math.min(std / 35, 1);
+  const rangeComponent = Math.min((top - bottom) / 70, 1);
+  const typicality = Math.round(1 + 99 * ((0.4 * marginComponent) + (0.4 * spreadComponent) + (0.2 * rangeComponent)));
+
+  let label = "混合型";
+  let text = "你的六个维度比较均衡，当前类型更像是一种主要倾向，而不是非常尖锐的单一类型。";
+
+  if (typicality >= 75) {
+    label = "很典型";
+    text = "你的维度轮廓比较集中，当前科学气质类型具有较高代表性。";
+  } else if (typicality >= 50) {
+    label = "中等典型";
+    text = "你的结果有清楚的主导方向，同时保留了一些其他研究风格。";
+  } else if (typicality < 25) {
+    label = "低典型性";
+    text = "你的各项维度很接近，类型判断的置信度较低，更适合看雷达图整体形状。";
+  }
+
+  return {
+    score: Math.max(1, Math.min(100, typicality)),
+    label,
+    text
+  };
+}
+
 function showResult() {
   const scores = getScores();
   const persona = pickPersona(scores);
+  const typicality = getTypicality(scores);
   document.getElementById("personaTitle").textContent = persona.name;
   document.getElementById("personaSummary").textContent = persona.summary;
   document.getElementById("personaKeywords").textContent = persona.keywords;
   document.getElementById("personaAdvice").textContent = persona.advice;
+  document.getElementById("typicalityScore").textContent = typicality.score;
+  document.getElementById("typicalityBar").style.width = `${typicality.score}%`;
+  document.getElementById("typicalityText").textContent = `${typicality.label}：${typicality.text}`;
   renderScores(scores);
   drawRadar(scores);
   resultEl.hidden = false;
@@ -486,7 +524,8 @@ restartBtn.addEventListener("click", () => {
 copyBtn.addEventListener("click", async () => {
   const scores = getScores();
   const persona = pickPersona(scores);
-  const text = `我的科学气质：${persona.name}\n${persona.keywords}\n${persona.summary}`;
+  const typicality = getTypicality(scores);
+  const text = `我的科学气质：${persona.name}\n典型性分数：${typicality.score}/100\n${persona.keywords}\n${persona.summary}`;
   try {
     await navigator.clipboard.writeText(text);
     copyBtn.textContent = "已复制";

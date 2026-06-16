@@ -350,7 +350,6 @@ const nextBtn = document.getElementById("nextBtn");
 const resultEl = document.getElementById("result");
 const restartBtn = document.getElementById("restartBtn");
 const copyBtn = document.getElementById("copyBtn");
-const completionCountEl = document.getElementById("completionCount");
 
 function renderQuestion() {
   const q = questions[current];
@@ -441,23 +440,6 @@ function getTypicality(scores) {
   };
 }
 
-async function loadCompletionCount() {
-  if (!completionCountEl) return;
-  try {
-    const response = await fetch(`${SHEETS_WEB_APP_URL}?t=${Date.now()}`);
-    if (!response.ok) throw new Error("Count request failed");
-    const data = await response.json();
-    const count = Number(data.count);
-    if (Number.isFinite(count)) {
-      completionCountEl.textContent = `已有 ${count} 人完成测试`;
-      return;
-    }
-    throw new Error("Invalid count");
-  } catch {
-    completionCountEl.textContent = "匿名结果统计已连接";
-  }
-}
-
 function submitResult(scores, persona, typicality) {
   if (hasSubmittedResult) return;
   hasSubmittedResult = true;
@@ -478,9 +460,6 @@ function submitResult(scores, persona, typicality) {
     mode: "no-cors",
     body: JSON.stringify(payload)
   })
-    .then(() => {
-      if (completionCountEl) completionCountEl.textContent = "你的匿名结果已记录";
-    })
     .catch(() => {
       hasSubmittedResult = false;
     });
@@ -616,4 +595,3 @@ copyBtn.addEventListener("click", async () => {
 });
 
 renderQuestion();
-loadCompletionCount();

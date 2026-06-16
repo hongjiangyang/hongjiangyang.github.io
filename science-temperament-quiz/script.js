@@ -311,6 +311,32 @@ const personas = [
 
 let current = 0;
 let answers = Array(questions.length).fill(null);
+const optionOrders = [
+  [1, 2, 3, 0],
+  [1, 0, 3, 2],
+  [3, 2, 0, 1],
+  [0, 2, 3, 1],
+  [0, 1, 2, 3],
+  [0, 3, 2, 1],
+  [1, 0, 2, 3],
+  [3, 0, 1, 2],
+  [0, 2, 1, 3],
+  [1, 0, 2, 3],
+  [0, 3, 1, 2],
+  [1, 3, 0, 2],
+  [1, 2, 0, 3],
+  [2, 1, 3, 0],
+  [3, 2, 1, 0],
+  [2, 0, 3, 1],
+  [2, 3, 0, 1],
+  [2, 1, 3, 0],
+  [3, 1, 2, 0],
+  [2, 3, 0, 1],
+  [3, 0, 1, 2],
+  [3, 2, 0, 1],
+  [1, 0, 2, 3],
+  [3, 0, 1, 2]
+];
 
 const questionCounter = document.getElementById("questionCounter");
 const questionText = document.getElementById("questionText");
@@ -324,18 +350,20 @@ const copyBtn = document.getElementById("copyBtn");
 
 function renderQuestion() {
   const q = questions[current];
+  const order = optionOrders[current];
   questionCounter.textContent = `第 ${current + 1} / ${questions.length} 题`;
   questionText.textContent = q.text;
   progressBar.style.width = `${(current / questions.length) * 100}%`;
   optionsEl.innerHTML = "";
 
-  q.options.forEach(([label], idx) => {
+  order.forEach(optionIndex => {
+    const [label] = q.options[optionIndex];
     const button = document.createElement("button");
     button.type = "button";
-    button.className = `option${answers[current] === idx ? " selected" : ""}`;
+    button.className = `option${answers[current] === optionIndex ? " selected" : ""}`;
     button.innerHTML = `<span class="option-marker"></span><span>${label}</span>`;
     button.addEventListener("click", () => {
-      answers[current] = idx;
+      answers[current] = optionIndex;
       renderQuestion();
     });
     optionsEl.appendChild(button);

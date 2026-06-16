@@ -7,6 +7,8 @@ const dimensions = [
   { key: "tools", label: "技术工具", color: "#3b7285" }
 ];
 
+const SHEETS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxXZPp3x8eBaKaERnWPikWa67wFy3vPOXgFkfOs_n0TPegw-Esr5y6PSG1N7QvA-1Xp/exec";
+
 const questions = [
   {
     text: "面对一个陌生现象，你最自然的第一步是？",
@@ -311,6 +313,7 @@ const personas = [
 
 let current = 0;
 let answers = Array(questions.length).fill(null);
+let hasSubmittedResult = false;
 const optionOrders = [
   [1, 2, 3, 0],
   [1, 0, 3, 2],
@@ -347,6 +350,7 @@ const nextBtn = document.getElementById("nextBtn");
 const resultEl = document.getElementById("result");
 const restartBtn = document.getElementById("restartBtn");
 const copyBtn = document.getElementById("copyBtn");
+const completionCountEl = document.getElementById("completionCount");
 
 function renderQuestion() {
   const q = questions[current];
@@ -437,6 +441,51 @@ function getTypicality(scores) {
   };
 }
 
+async function loadCompletionCount() {
+  if (!completionCountEl) return;
+  try {
+    const response = await fetch(`${SHEETS_WEB_APP_URL}?t=${Date.now()}`);
+    if (!response.ok) throw new Error("Count request failed");
+    const data = await response.json();
+    const count = Number(data.count);
+    if (Number.isFinite(count)) {
+      completionCountEl.textContent = `已有 ${count} 人完成测试`;
+      return;
+    }
+    throw new Error("Invalid count");
+  } catch {
+    completionCountEl.textContent = "匿名结果统计已连接";
+  }
+}
+
+function submitResult(scores, persona, typicality) {
+  if (hasSubmittedResult) return;
+  hasSubmittedResult = true;
+
+  const payload = {
+    persona: persona.name,
+    typicality: typicality.score,
+    observation: scores.observation,
+    math: scores.math,
+    experiment: scores.experiment,
+    skepticism: scores.skepticism,
+    imagination: scores.imagination,
+    tools: scores.tools
+  };
+
+  fetch(SHEETS_WEB_APP_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: JSON.stringify(payload)
+  })
+    .then(() => {
+      if (completionCountEl) completionCountEl.textContent = "你的匿名结果已记录";
+    })
+    .catch(() => {
+      hasSubmittedResult = false;
+    });
+}
+
 function showResult() {
   const scores = getScores();
   const persona = pickPersona(scores);
@@ -450,6 +499,7 @@ function showResult() {
   document.getElementById("typicalityText").textContent = `${typicality.label}：${typicality.text}`;
   renderScores(scores);
   drawRadar(scores);
+  submitResult(scores, persona, typicality);
   resultEl.hidden = false;
   progressBar.style.width = "100%";
   resultEl.scrollIntoView({ behavior: "smooth" });
@@ -544,6 +594,7 @@ nextBtn.addEventListener("click", () => {
 restartBtn.addEventListener("click", () => {
   answers = Array(questions.length).fill(null);
   current = 0;
+  hasSubmittedResult = false;
   resultEl.hidden = true;
   renderQuestion();
   document.getElementById("quiz").scrollIntoView({ behavior: "smooth" });
@@ -565,3 +616,4 @@ copyBtn.addEventListener("click", async () => {
 });
 
 renderQuestion();
+loadCompletionCount();

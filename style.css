@@ -236,6 +236,14 @@ h3 {
   font-weight: 800;
 }
 
+.pub-note {
+  max-width: 920px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--wine);
+  background: #f3efe5;
+  font-size: 15px;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

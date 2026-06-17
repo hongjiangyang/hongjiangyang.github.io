@@ -256,58 +256,106 @@ const personas = [
   {
     name: "伽利略型实验观察者",
     lead: ["observation", "experiment"],
+    tradition: "伽利略型：观察-实验传统",
     keywords: "物理天文、观察、实验、反直觉",
     summary: "你擅长把日常现象变成可检验的问题，用观察和实验把世界从直觉里解放出来。",
-    advice: "你的优势是证据感强。继续保留怀疑，也给大胆解释留下生长空间。"
+    advice: "你的优势是证据感强。继续保留怀疑，也给大胆解释留下生长空间。",
+    questions: [
+      "一个看似普通的现象是否隐藏着可重复的规律？",
+      "改变哪个条件，最能检验现象背后的因果关系？",
+      "直觉解释和实验结果之间的差异说明了什么？"
+    ]
   },
   {
     name: "达尔文型生命综合者",
     lead: ["observation", "imagination"],
+    tradition: "达尔文型：长期观察-综合解释传统",
     keywords: "生命科学、演化、比较、长期积累",
     summary: "你能忍受长时间的材料积累，并在大量细节之间看见缓慢形成的生命模式。",
-    advice: "你的优势是耐心和综合力。适当引入定量模型，会让洞见更锋利。"
+    advice: "你的优势是耐心和综合力。适当引入定量模型，会让洞见更锋利。",
+    questions: [
+      "长期积累的细节是否正在形成一个更大的解释框架？",
+      "不同个体、物种或情境之间有哪些可比较的模式？",
+      "一个复杂现象是否可以通过历史过程来理解？"
+    ]
   },
   {
     name: "居里型化学实验家",
     lead: ["experiment", "tools"],
+    tradition: "居里型：材料-实验坚韧传统",
     keywords: "化学材料、实验、分离、可靠性",
     summary: "你相信发现来自反复操作、校准和坚持，愿意在艰苦细节里守住微弱但真实的信号。",
-    advice: "你的优势是执行力。别忘了定期退后一步，问问这些结果正在指向什么大问题。"
+    advice: "你的优势是执行力。别忘了定期退后一步，问问这些结果正在指向什么大问题。",
+    questions: [
+      "微弱信号是否可以通过更可靠的方法被分离出来？",
+      "实验材料、流程或仪器中的哪一步决定了结果质量？",
+      "一个不稳定结果怎样才能变成可重复的证据？"
+    ]
   },
   {
     name: "南丁格尔型数据医学者",
     lead: ["math", "observation"],
+    tradition: "南丁格尔型：数据-公共问题传统",
     keywords: "医学、统计、可视化、公共健康",
     summary: "你善于把真实世界中的混乱记录转化为可比较的数据，并用清晰证据推动改变。",
-    advice: "你的优势是把数据和现实问题连在一起。继续注意样本、偏差和解释边界。"
+    advice: "你的优势是把数据和现实问题连在一起。继续注意样本、偏差和解释边界。",
+    questions: [
+      "混乱的现实记录能否转化成可比较、可行动的数据？",
+      "哪些统计图形最能让问题被看见并推动改变？",
+      "数据中的差异是否指向一个需要被解决的公共问题？"
+    ]
   },
   {
     name: "图灵型计算建模者",
     lead: ["math", "tools"],
+    tradition: "图灵型：形式化-计算工具传统",
     keywords: "计算科学、算法、形式化、机器",
     summary: "你习惯把问题转化为可计算的结构，并愿意借助工具扩展思想边界。",
-    advice: "你的优势是形式化和工具思维。多和实验数据相遇，会让抽象更有生命。"
+    advice: "你的优势是形式化和工具思维。多和实验数据相遇，会让抽象更有生命。",
+    questions: [
+      "一个复杂系统能不能被简化成规则？",
+      "数据背后是否存在可计算结构？",
+      "有没有一种算法可以扩展人的理解？"
+    ]
   },
   {
     name: "古道尔型行为田野者",
     lead: ["observation", "skepticism"],
+    tradition: "古道尔型：行为-田野观察传统",
     keywords: "行为科学、田野、个体差异、耐心观察",
     summary: "你愿意靠近真实行为本身，在长时间观察中识别个体、情境和关系的细微变化。",
-    advice: "你的优势是对复杂行为的敏感度。把观察协议固定下来，会让发现更容易被别人验证。"
+    advice: "你的优势是对复杂行为的敏感度。把观察协议固定下来，会让发现更容易被别人验证。",
+    questions: [
+      "个体行为差异是否有稳定模式？",
+      "社会互动中的微小变化如何积累？",
+      "长期观察能否揭示实验室中看不到的规律？"
+    ]
   },
   {
     name: "卡森型生态连接者",
     lead: ["imagination", "skepticism"],
+    tradition: "卡森型：系统联系-风险意识传统",
     keywords: "生态环境、系统联系、风险、责任",
     summary: "你擅长看见局部变化背后的系统连锁反应，也会追问科学发现如何进入公共生活。",
-    advice: "你的优势是系统感和责任感。继续把关切落到证据链上，会让判断更有力量。"
+    advice: "你的优势是系统感和责任感。继续把关切落到证据链上，会让判断更有力量。",
+    questions: [
+      "一个局部改变会不会引发更大系统的连锁反应？",
+      "哪些风险在短期数据中不明显，却会在长期积累中显现？",
+      "科学证据如何进入公共讨论和社会决策？"
+    ]
   },
   {
     name: "波普尔型怀疑检验者",
     lead: ["skepticism", "experiment"],
+    tradition: "波普尔型：反证-方法论传统",
     keywords: "科学哲学、反证、边界、检验",
     summary: "你对漂亮说法保持警惕，最关心一个观点如何被挑战、被检验、被修正。",
-    advice: "你的优势是清醒。也给新想法一点生长时间，不必一开始就把它推上审判台。"
+    advice: "你的优势是清醒。也给新想法一点生长时间，不必一开始就把它推上审判台。",
+    questions: [
+      "一个解释在什么条件下会被证明是错的？",
+      "看似有力的结论是否依赖未说出口的前提？",
+      "怎样设计检验，才能区分理论和替代理论？"
+    ]
   }
 ];
 
@@ -470,9 +518,11 @@ function showResult() {
   const persona = pickPersona(scores);
   const typicality = getTypicality(scores);
   document.getElementById("personaTitle").textContent = persona.name;
+  document.getElementById("personaTradition").textContent = persona.tradition;
   document.getElementById("personaSummary").textContent = persona.summary;
   document.getElementById("personaKeywords").textContent = persona.keywords;
   document.getElementById("personaAdvice").textContent = persona.advice;
+  renderPersonaQuestions(persona.questions);
   document.getElementById("typicalityScore").textContent = typicality.score;
   document.getElementById("typicalityBar").style.width = `${typicality.score}%`;
   document.getElementById("typicalityText").textContent = `${typicality.label}：${typicality.text}`;
@@ -482,6 +532,16 @@ function showResult() {
   resultEl.hidden = false;
   progressBar.style.width = "100%";
   resultEl.scrollIntoView({ behavior: "smooth" });
+}
+
+function renderPersonaQuestions(questions) {
+  const list = document.getElementById("personaQuestions");
+  list.innerHTML = "";
+  questions.forEach(question => {
+    const item = document.createElement("li");
+    item.textContent = question;
+    list.appendChild(item);
+  });
 }
 
 function renderScores(scores) {
@@ -583,7 +643,7 @@ copyBtn.addEventListener("click", async () => {
   const scores = getScores();
   const persona = pickPersona(scores);
   const typicality = getTypicality(scores);
-  const text = `我的科学气质：${persona.name}\n典型性分数：${typicality.score}/100\n${persona.keywords}\n${persona.summary}`;
+  const text = `我的科学气质：${persona.name}\n${persona.tradition}\n典型性分数：${typicality.score}/100\n${persona.keywords}\n${persona.summary}`;
   try {
     await navigator.clipboard.writeText(text);
     copyBtn.textContent = "已复制";

@@ -24,6 +24,17 @@
         <p class="hero-copy">
           你更像哪一种科学发现者？回答 24 个问题，生成你的科学气质雷达图。
         </p>
+        <div class="concept-box">
+          <p>科学发现不是一种能力，而是多种认识方式的组合。</p>
+          <div class="dimension-chips" aria-label="六种接近未知的方式">
+            <span>观察力：让现象变得可见</span>
+            <span>数学化：让关系变得清楚</span>
+            <span>实验精神：让因果变得可检验</span>
+            <span>怀疑精神：让解释变得可靠</span>
+            <span>跨界想象：让问题变得更大</span>
+            <span>技术工具：让能力突破身体和直觉的限制</span>
+          </div>
+        </div>
         <a class="primary-action" href="#quiz">开始测试</a>
       </div>
     </section>
@@ -51,6 +62,8 @@
       <div class="result-heading">
         <p class="section-label">Result</p>
         <h2 id="personaTitle"></h2>
+        <p class="tradition-note" id="personaTradition"></p>
+        <p class="result-note">这个名字代表一种科学认识传统，不表示你本人等同于某位科学家。</p>
         <p id="personaSummary"></p>
         <div class="typicality-box" aria-live="polite">
           <div class="typicality-head">
@@ -73,6 +86,10 @@
           <div class="persona-box">
             <h3 id="personaKeywords"></h3>
             <p id="personaAdvice"></p>
+            <div class="question-box">
+              <h4>适合提出的问题</h4>
+              <ul id="personaQuestions"></ul>
+            </div>
           </div>
           <div class="result-actions">
             <button id="restartBtn" type="button" class="secondary">重新测试</button>

@@ -348,3 +348,14 @@ h3 {
     padding: 18px;
   }
 }
+
+/* Brain Atlas: balanced introduction and anatomical preview. */
+.atlas-feature { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:clamp(28px,5vw,68px); align-items:center; }
+.atlas-copy h2 { max-width:520px; }
+.atlas-description { max-width:470px; margin:20px 0 26px; color:var(--muted); line-height:1.75; }
+.atlas-button { display:inline-flex; align-items:center; justify-content:center; gap:22px; min-height:52px; padding:14px 22px; border:1px solid var(--line); border-radius:8px; background:var(--panel); font-weight:650; font-size:1rem; text-decoration:none; transition:transform 160ms ease,border-color 160ms ease; }
+.atlas-button:hover { transform:translateY(-2px); border-color:rgba(31,111,91,.55); }
+.atlas-preview { display:flex; align-items:center; justify-content:center; width:100%; max-width:480px; justify-self:end; border-radius:12px; overflow:hidden; }
+.atlas-preview img { display:block; width:100%; height:auto; max-height:330px; object-fit:contain; }
+.atlas-preview:focus-visible,.atlas-button:focus-visible { outline:3px solid #7758bb; outline-offset:5px; }
+@media(max-width:760px) { .atlas-feature { grid-template-columns:1fr; gap:28px; } .atlas-preview { justify-self:center; max-width:420px; } .atlas-preview img { max-height:290px; } .atlas-button { min-height:48px; } }

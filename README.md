@@ -18,3 +18,6 @@ https://hongjiangyang.github.io
 
 Open `index.html` in a browser to preview the site locally.
 
+
+- `brain-atlas/`: static interactive mouse brain atlas, 33 region selections.
+- `science-temperament-quiz/`: existing quiz, preserved.

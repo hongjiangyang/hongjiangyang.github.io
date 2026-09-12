@@ -359,3 +359,13 @@ h3 {
 .atlas-preview img { display:block; width:100%; height:auto; max-height:330px; object-fit:contain; }
 .atlas-preview:focus-visible,.atlas-button:focus-visible { outline:3px solid #7758bb; outline-offset:5px; }
 @media(max-width:760px) { .atlas-feature { grid-template-columns:1fr; gap:28px; } .atlas-preview { justify-self:center; max-width:420px; } .atlas-preview img { max-height:290px; } .atlas-button { min-height:48px; } }
+
+/* Portrait beneath the About motto. */
+.about-portrait {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  margin-top: 28px;
+  border-radius: 8px;
+}

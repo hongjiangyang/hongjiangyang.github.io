@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
-import {questions,types,score,classify,clarity} from '../data.js';
+import {questions,types,score,classify,clarity,endpointWords,endpointLetters,typeCode} from '../data.js';
+assert.deepEqual(endpointLetters,[['R','D'],['O','E'],['C','M'],['B','F']]);
+for(let axis=0;axis<4;axis++)for(let bit=0;bit<2;bit++)assert.equal(endpointLetters[axis][bit],endpointWords[axis][bit][0]);
+assert.equal(new Set(types.map(typeCode)).size,16);
+for(const t of types)assert.equal(typeCode(t),t.bits.map((bit,axis)=>endpointWords[axis][bit][0]).join(''));
 assert.equal(questions.length,36);assert.equal(types.length,16);
 for(let a=0;a<4;a++){const qs=questions.filter(q=>q.axis===a);assert.equal(qs.length,9);assert.ok([4,5].includes(qs.filter(q=>q.sign===1).length));}
 for(const t of types){const answers=questions.map(q=>(t.bits[q.axis]?3:-3)*q.sign);const s=score(answers);assert.equal(classify(s).id,t.id);assert.equal(clarity(s),100);}

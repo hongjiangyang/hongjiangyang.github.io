@@ -1,6 +1,6 @@
-import {axes,questions,scenarios,families,types,score,classify,clarity,journey} from './data.js?v=5.0';
-const $=s=>document.querySelector(s), letters=[['S','C'],['O','T'],['E','R'],['W','D']],words=[['Solo','Collaborative'],['Observe','Try'],['Examples','Relations'],['Wide','Dwell']];
-const code=t=>t.bits.map((b,i)=>letters[i][b]).join('');
+import {axes,questions,scenarios,families,types,score,classify,clarity,journey,endpointLetters,endpointWords,typeCode} from './data.js?v=5.1';
+const $=s=>document.querySelector(s), letters=endpointLetters,words=endpointWords;
+const code=typeCode;
 let answers=Array(questions.length).fill(null),page=0,ties={},scores=[],currentType=null;
 const sections=['home','guide','quiz','tie','result'];
 function show(id){sections.forEach(s=>$('#'+s).hidden=s!==id);window.scrollTo(0,0);}

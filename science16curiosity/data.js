@@ -1,4 +1,8 @@
-export const VERSION='5.0';
+export const VERSION='5.1';
+// Endpoint names are the single source for the four-letter type codes.
+export const endpointWords=[['Reflection','Dialogue'],['Observation','Experimentation'],['Context','Modeling'],['Branching','Following']];
+export const endpointLetters=endpointWords.map(pair=>pair.map(word=>word[0]));
+export const typeCode=t=>t.bits.map((bit,axis)=>endpointLetters[axis][bit]).join('');
 export const axes=[
   {
     "name": "思路形成",

@@ -1,0 +1,56 @@
+{
+  "version": "DHBAv2 gyral 2025",
+  "source": "https://alleninstitute.github.io/CCF-MAP/descriptions/human_ccf.html",
+  "annotationUrl": "https://allen-atlas-assets.s3.us-west-2.amazonaws.com/annotation-sets/hmba-adult-human-dhbav2gyral-annotation/2025/annotations_compressed_500.nii.gz",
+  "terminologyUrl": "https://allen-atlas-assets.s3.us-west-2.amazonaws.com/terminologies/hmba-mammalian-homba-terminology/2025/terminology.csv",
+  "sha256": "e9412295ac2f51a608da851a8e95e58bca8ead4ddf976dcff71c2dcadb86d8e7",
+  "orientation": [
+    "R",
+    "A",
+    "S"
+  ],
+  "affine": [
+    [
+      0.5,
+      0.0,
+      -0.0,
+      -98.0
+    ],
+    [
+      0.0,
+      0.5,
+      -0.0,
+      -134.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.5,
+      -72.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "shape": [
+    394,
+    466,
+    378
+  ],
+  "unmappedLabels": [
+    {
+      "label": 32,
+      "voxels": 42
+    },
+    {
+      "label": 248,
+      "voxels": 22
+    }
+  ],
+  "meshCount": 315,
+  "catalogEntries": 477,
+  "processing": "Per-label masks, Gaussian sigma 0.45 voxel; marching cubes step 1 (2 above 150000 voxels); affine applied to RAS mm. Outer surface: annotation union with enclosed holes filled, sigma 0.7, step 2. Display meshes, not quantitative morphometry."
+}

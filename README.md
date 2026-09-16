@@ -14,11 +14,6 @@ https://hongjiangyang.github.io
 - `style.css`: page styling
 - `assets/neural-hero.png`: generated scientific hero background image
 
-## Local Preview
-
-Open `index.html` in a browser to preview the site locally.
-
-
 - `brain-atlas/`: static interactive mouse brain atlas, the complete Allen structure directory with 840 available meshes.
 - `science-temperament-quiz/`: existing quiz, preserved.
 

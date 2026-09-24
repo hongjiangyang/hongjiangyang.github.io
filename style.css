@@ -79,7 +79,7 @@ a {
 .hero-media {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(90deg, rgba(8, 15, 14, 0.88), rgba(8, 15, 14, 0.48), rgba(8, 15, 14, 0.18)), url("assets/neural-hero.png");
+  background-image: linear-gradient(90deg, rgba(8, 15, 14, 0.88), rgba(8, 15, 14, 0.48), rgba(8, 15, 14, 0.18)), url("assets/neural-hero.webp");
   background-size: cover;
   background-position: center;
   transform: scale(1.02);
@@ -299,6 +299,10 @@ h3 {
 }
 
 @media (max-width: 900px) {
+  .hero-media {
+    background-image: linear-gradient(90deg, rgba(8, 15, 14, 0.88), rgba(8, 15, 14, 0.48), rgba(8, 15, 14, 0.18)), url("assets/neural-hero-mobile.webp");
+  }
+
   .site-header {
     position: static;
     align-items: flex-start;
